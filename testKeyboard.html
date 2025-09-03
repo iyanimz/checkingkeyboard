@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <title>Test Keyboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000000, #2b0040);
+      color: #b266ff;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .keyboard {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .row {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+    }
+    .key {
+      min-width: 45px;
+      height: 55px;
+      border: 1px solid #555;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      border-radius: 6px;
+      user-select: none;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      transition: transform 0.1s ease, background 0.2s ease;
+      color: #b266ff;
+    }
+    .key span {
+      line-height: 1.1em;
+    }
+    .active {
+      background: limegreen !important;
+      color: white;
+    }
+    .pressed {
+      transform: scale(0.9);
+    }
+    .wide { min-width: 70px; }
+    .extra-wide { min-width: 90px; }
+    .space { min-width: 260px; }
+    .reset-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: crimson;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>MaxPoint Checking Keyboard</h1>
+
+  <div class="keyboard" id="keyboard">
+    <!-- Baris F -->
+    <div class="row">
+      <div class="key" data-code="Escape"><span>Esc</span></div>
+      <div class="key" data-code="F1"><span>F1</span></div>
+      <div class="key" data-code="F2"><span>F2</span></div>
+      <div class="key" data-code="F3"><span>F3</span></div>
+      <div class="key" data-code="F4"><span>F4</span></div>
+      <div class="key" data-code="F5"><span>F5</span></div>
+      <div class="key" data-code="F6"><span>F6</span></div>
+      <div class="key" data-code="F7"><span>F7</span></div>
+      <div class="key" data-code="F8"><span>F8</span></div>
+      <div class="key" data-code="F9"><span>F9</span></div>
+      <div class="key" data-code="F10"><span>F10</span></div>
+      <div class="key" data-code="F11"><span>F11</span></div>
+      <div class="key" data-code="F12"><span>F12</span></div>
+      <div class="key" data-code="PrintScreen"><span>PrtSc</span></div>
+      <div class="key" data-code="Insert"><span>Ins</span></div>
+      <div class="key" data-code="Delete"><span>Del</span></div>
+    </div>
+
+    <!-- Baris angka -->
+    <div class="row">
+      <div class="key" data-code="Backquote"><span>~</span><span>`</span></div>
+      <div class="key" data-code="Digit1"><span>!</span><span>1</span></div>
+      <div class="key" data-code="Digit2"><span>@</span><span>2</span></div>
+      <div class="key" data-code="Digit3"><span>#</span><span>3</span></div>
+      <div class="key" data-code="Digit4"><span>$</span><span>4</span></div>
+      <div class="key" data-code="Digit5"><span>%</span><span>5</span></div>
+      <div class="key" data-code="Digit6"><span>^</span><span>6</span></div>
+      <div class="key" data-code="Digit7"><span>&</span><span>7</span></div>
+      <div class="key" data-code="Digit8"><span>*</span><span>8</span></div>
+      <div class="key" data-code="Digit9"><span>(</span><span>9</span></div>
+      <div class="key" data-code="Digit0"><span>)</span><span>0</span></div>
+      <div class="key" data-code="Minus"><span>_</span><span>-</span></div>
+      <div class="key" data-code="Equal"><span>+</span><span>=</span></div>
+      <div class="key wide" data-code="Backspace"><span>Backspace</span></div>
+    </div>
+
+    <!-- Baris QWERTY -->
+    <div class="row">
+      <div class="key wide" data-code="Tab"><span>Tab</span></div>
+      <div class="key" data-code="KeyQ"><span>Q</span></div>
+      <div class="key" data-code="KeyW"><span>W</span></div>
+      <div class="key" data-code="KeyE"><span>E</span></div>
+      <div class="key" data-code="KeyR"><span>R</span></div>
+      <div class="key" data-code="KeyT"><span>T</span></div>
+      <div class="key" data-code="KeyY"><span>Y</span></div>
+      <div class="key" data-code="KeyU"><span>U</span></div>
+      <div class="key" data-code="KeyI"><span>I</span></div>
+      <div class="key" data-code="KeyO"><span>O</span></div>
+      <div class="key" data-code="KeyP"><span>P</span></div>
+      <div class="key" data-code="BracketLeft"><span>{</span><span>[</span></div>
+      <div class="key" data-code="BracketRight"><span>}</span><span>]</span></div>
+      <div class="key" data-code="Backslash"><span>|</span><span>\</span></div>
+    </div>
+
+    <!-- Baris ASDF -->
+    <div class="row">
+      <div class="key wide" data-code="CapsLock"><span>CapsLock</span></div>
+      <div class="key" data-code="KeyA"><span>A</span></div>
+      <div class="key" data-code="KeyS"><span>S</span></div>
+      <div class="key" data-code="KeyD"><span>D</span></div>
+      <div class="key" data-code="KeyF"><span>F</span></div>
+      <div class="key" data-code="KeyG"><span>G</span></div>
+      <div class="key" data-code="KeyH"><span>H</span></div>
+      <div class="key" data-code="KeyJ"><span>J</span></div>
+      <div class="key" data-code="KeyK"><span>K</span></div>
+      <div class="key" data-code="KeyL"><span>L</span></div>
+      <div class="key" data-code="Semicolon"><span>:</span><span>;</span></div>
+      <div class="key" data-code="Quote"><span>"</span><span>'</span></div>
+      <div class="key extra-wide" data-code="Enter"><span>Enter</span></div>
+    </div>
+
+    <!-- Baris ZXCV -->
+    <div class="row">
+      <div class="key extra-wide" data-code="ShiftLeft"><span>Shift</span></div>
+      <div class="key" data-code="KeyZ"><span>Z</span></div>
+      <div class="key" data-code="KeyX"><span>X</span></div>
+      <div class="key" data-code="KeyC"><span>C</span></div>
+      <div class="key" data-code="KeyV"><span>V</span></div>
+      <div class="key" data-code="KeyB"><span>B</span></div>
+      <div class="key" data-code="KeyN"><span>N</span></div>
+      <div class="key" data-code="KeyM"><span>M</span></div>
+      <div class="key" data-code="Comma"><span>&lt;</span><span>,</span></div>
+      <div class="key" data-code="Period"><span>&gt;</span><span>.</span></div>
+      <div class="key" data-code="Slash"><span>?</span><span>/</span></div>
+      <div class="key extra-wide" data-code="ShiftRight"><span>Shift</span></div>
+    </div>
+
+    <!-- Baris bawah tanpa Fn -->
+    <div class="row">
+      <div class="key" data-code="ControlLeft"><span>Ctrl</span></div>
+      <div class="key" data-code="MetaLeft"><span>Win</span></div>
+      <div class="key" data-code="AltLeft"><span>Alt</span></div>
+      <div class="key space" data-code="Space"><span>Space</span></div>
+      <div class="key" data-code="AltRight"><span>Alt</span></div>
+      <div class="key" data-code="MetaRight"><span>Win</span></div>
+      <div class="key" data-code="ControlRight"><span>Ctrl</span></div>
+    </div>
+
+    <!-- Arrow keys -->
+    <div class="row">
+      <div class="key" data-code="Home"><span>Home</span></div>
+      <div class="key" data-code="End"><span>End</span></div>
+      <div class="key" data-code="PageUp"><span>PgUp</span></div>
+      <div class="key" data-code="PageDown"><span>PgDn</span></div>
+      <div class="key" data-code="ArrowUp"><span>↑</span></div>
+      <div class="key" data-code="ArrowLeft"><span>←</span></div>
+      <div class="key" data-code="ArrowDown"><span>↓</span></div>
+      <div class="key" data-code="ArrowRight"><span>→</span></div>
+    </div>
+  </div>
+
+  <button class="reset-btn" onclick="resetKeyboard()">Reset</button>
+
+  <script>
+    const keyElements = {};
+    document.querySelectorAll(".key").forEach(el => {
+      const code = el.getAttribute("data-code");
+      if (code) keyElements[code] = el;
+    });
+
+    document.addEventListener("keydown", e => {
+      e.preventDefault(); // cegah browser refresh/save
+      if (keyElements[e.code]) {
+        keyElements[e.code].classList.add("active", "pressed");
+      }
+    });
+
+    document.addEventListener("keyup", e => {
+      if (keyElements[e.code]) {
+        keyElements[e.code].classList.remove("pressed");
+        keyElements[e.code].classList.add("active"); // tetap menyala setelah dilepas
+      }
+    });
+
+    function resetKeyboard() {
+      document.querySelectorAll(".key").forEach(el => el.classList.remove("active", "pressed"));
+    }
+  </script>
+</body>
+</html>
